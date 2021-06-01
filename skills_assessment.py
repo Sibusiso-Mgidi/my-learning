@@ -62,22 +62,58 @@ class Question():
         This method prints thee questio and prompts the user to answer.
         :returns: boolean values (True or False)
         """
-        
+
         print(self.question)
-        print("Please Type True or False only")
         user_solution = input("Enter the solution: \n")
         if user_solution == self.solution:
-            print("Your solutions is correct")
             return True
         else:
-            print("Your solutions is incorrect")
             return False
         
+class Exam():
+    """
+    This is a blueprint for students exam questions
+    """
+    def __init__(self, exam_name, store_questions):
+        self.exam_name = exam_name
+        self.store_questions = []
+
+    def __str__(self):
+        """
+        This method returns exam name and questions
+        """
+        return "This is the {} Exam\n  The questions for this Exam are {}: \n".format(self.exam_name, self.question)
+
+    def add_question(self, questions, correct_solutions):
+        """
+        This is a method which adds questions and correct answers for a specific exam.
+        """
+        self.store_questions.append(Question(questions,correct_solutions))
+
+    def conduct_exams(self):
+        """
+        This function asks questions and returns the score of how many were correct.
+        """
         
+        correct_sols = 0
+        for question in self.store_questions:
+            
+            if question.ask_and_evaluate():
+                correct_sols += 1
+        
+        score = (correct_sols/len(self.store_questions)) * 100
+        return score
+            
+
+
+
+
+        
+
 
     
 # test the class
-question= Question("Was Sibusiso Mgidi born on the 2nd of January 1996: \n",True)
+question = Question("1. Was Sibusiso Mgidi born on the 2nd of January 1996: \n",True)
 
 question.ask_and_evaluate()
 
