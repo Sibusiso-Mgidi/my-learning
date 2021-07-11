@@ -11,8 +11,11 @@ class TestCircleArea(unittest.TestCase):
         self.assertAlmostEqual(get_circle_area(1), np.pi)
         self.assertAlmostEqual(get_circle_area(0), 0)
         self.assertAlmostEqual(get_circle_area(2.1), np.pi*np.power(2.1,2))
-        
 
+    def test_values(self):
+        # Raise an error for negative numbers
+        self.assertRaises(ValueError, get_circle_area, -3)
+        
         
 
 
