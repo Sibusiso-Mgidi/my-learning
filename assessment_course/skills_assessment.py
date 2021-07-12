@@ -38,3 +38,8 @@ class Question(object):
             return True
         else:
             return False
+
+class Exam(object):
+    """
+    This is a blueprint for storing students exam scores 
+    """
